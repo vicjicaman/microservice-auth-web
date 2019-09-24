@@ -16,8 +16,7 @@ const Confirm = ({ button: TriggerButton, onConfirm }) => {
       <TriggerButton open={open} />
       <Modal isOpen={isOpen} toggle={close}>
         <ModalHeader toggle={close}>
-          <i className="fa fa-times-circle" />
-          {' '}Unregister account
+          <i className="fa fa-times-circle" /> Unregister account
         </ModalHeader>
         <ModalBody>
           Your are about to delete your account, this can't be undone.
@@ -44,10 +43,8 @@ const Confirm = ({ button: TriggerButton, onConfirm }) => {
 const UNREGISTER = gql`
   mutation Unregister {
     viewer {
-      protected {
-        account {
-          unregister
-        }
+      account {
+        unregister
       }
     }
   }

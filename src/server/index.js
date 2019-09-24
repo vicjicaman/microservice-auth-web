@@ -11,6 +11,7 @@ const AUTH_BASE_ROUTE_APP = process.env["AUTH_BASE_ROUTE_APP"];
 const AUTH_INTERNAL_URL_GRAPH =  process.env["AUTH_INTERNAL_URL_GRAPH"];
 const AUTH_EXTERNAL_URL_GRAPH =  process.env["AUTH_EXTERNAL_URL_GRAPH"];
 const AUTH_INTERNAL_PORT_APP = process.env["AUTH_INTERNAL_PORT_APP"];
+const RESOURCE_BASE_ROUTE = process.env["RESOURCE_BASE_ROUTE"];
 
 const app = express();
 
@@ -38,6 +39,10 @@ app.get("/*", (req, res) => {
       res,
       watchers,
       reducers,
+      paths: {
+        base: AUTH_BASE_ROUTE_APP,
+        resources: RESOURCE_BASE_ROUTE
+      },
       urls: {
         external: {
           graphql: AUTH_EXTERNAL_URL_GRAPH
