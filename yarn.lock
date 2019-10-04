@@ -752,10 +752,10 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@nebulario/microservice-layout@1.70.1-master":
-  version "1.70.1-master"
-  resolved "https://registry.yarnpkg.com/@nebulario/microservice-layout/-/microservice-layout-1.70.1-master.tgz#40c45a9edca09f80eb3d3472de148b34ef7e9458"
-  integrity sha512-X9wsA8VIyW9GHFoVQANPmSY/2l2Bmoya/oRukSMX/5KSs2oHiie8nvDhJtX6OdNJlKDJSM9pCGsr9GYwabEtAg==
+"@nebulario/microservice-layout@1.70.2-master":
+  version "1.70.2-master"
+  resolved "https://registry.yarnpkg.com/@nebulario/microservice-layout/-/microservice-layout-1.70.2-master.tgz#04d69b7a601576b37c2b87aa03eedfd476de874b"
+  integrity sha512-ecHV1gwf7wMQ/vITdWhazq1tzshIuqZrW+ZQuhGTOifIE5XCKrIhhZyLG5x/V/QjN6RvNXkMGwwL2bP0EcZpSQ==
 
 "@types/node@>=6":
   version "12.7.4"
