@@ -1,6 +1,6 @@
 {
   "name": "@nebulario/microservice-auth-web",
-  "version": "1.70.0-master",
+  "version": "1.70.0-blog-layout-upstream-dev",
   "main": "index.js",
   "repository": "git@github.com:vicjicaman/microservice-auth-web.git",
   "author": "Victor Jimenez <vic.jicama@gmail.com>",
