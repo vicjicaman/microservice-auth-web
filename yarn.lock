@@ -774,14 +774,15 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@nebulario/microservice-layout@link:../microservice-layout":
-  version "0.0.0"
-  uid ""
+"@nebulario/microservice-layout@1.70.1-auth-linker-update-prod":
+  version "1.70.1-auth-linker-update-prod"
+  resolved "https://registry.yarnpkg.com/@nebulario/microservice-layout/-/microservice-layout-1.70.1-auth-linker-update-prod.tgz#9ebed6deaa8e46a626248ce8f071f740749b7d48"
+  integrity sha512-JEaDMiV/PiXN4AdznLa3gIes+YBn2UiwiftO4HSguisEgEaEJOvfs6voAyQooUAX44+cUpHj+10VXhn+Gv5tbg==
 
-"@nebulario/microservice-logger@1.70.0-master":
-  version "1.70.0-master"
-  resolved "https://registry.yarnpkg.com/@nebulario/microservice-logger/-/microservice-logger-1.70.0-master.tgz#559ead19b4c7226fd93a760fbe61318b2fb5ff8c"
-  integrity sha512-C/etoY63MEUh45A37QgTxxDSoetYKSHDiGMAYnPyPQ9RDJuXhubXfSsKSv6ujZXrI+4QyNjeW829bkxffBk5yQ==
+"@nebulario/microservice-logger@1.70.1-master":
+  version "1.70.1-master"
+  resolved "https://registry.yarnpkg.com/@nebulario/microservice-logger/-/microservice-logger-1.70.1-master.tgz#c56c0124d8138aa663da201fb29f6a0391fdf64c"
+  integrity sha512-Fih2Ei97NRAj8TMbWBkE9eVjbZp2hpJGvBWA3ePDuztpTCSrK0UAADvt0SsVxUTmmmN/ho+v9hxP65Ja8nwqxA==
   dependencies:
     "@babel/runtime" "^7.6.0"
     "@babel/runtime-corejs3" "^7.6.0"
