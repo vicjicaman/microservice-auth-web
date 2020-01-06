@@ -774,10 +774,10 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@nebulario/microservice-layout@1.70.1-auth-linker-update-prod":
-  version "1.70.1-auth-linker-update-prod"
-  resolved "https://registry.yarnpkg.com/@nebulario/microservice-layout/-/microservice-layout-1.70.1-auth-linker-update-prod.tgz#9ebed6deaa8e46a626248ce8f071f740749b7d48"
-  integrity sha512-JEaDMiV/PiXN4AdznLa3gIes+YBn2UiwiftO4HSguisEgEaEJOvfs6voAyQooUAX44+cUpHj+10VXhn+Gv5tbg==
+"@nebulario/microservice-layout@1.70.3-master":
+  version "1.70.3-master"
+  resolved "https://registry.yarnpkg.com/@nebulario/microservice-layout/-/microservice-layout-1.70.3-master.tgz#5c06ce3524887c32399086c5ffafc88a8da4e3dc"
+  integrity sha512-tzGTTszhgiZedLTEKG4IH1pIQMvQSPdKBmdFQFcG8Fg2vOFfFQF/A9XRYIKH+MXaZ6cyK+EloLIo7CwK94uylw==
 
 "@nebulario/microservice-logger@1.70.1-master":
   version "1.70.1-master"
