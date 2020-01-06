@@ -9,7 +9,7 @@ import Loading from "UI/loading";
 import * as Viewer from "Queries/viewer";
 import * as Mutation from "UI/utils/mutation";
 import validator from "validator";
-import * as ValidationUtils from "PKG/linker-validation";
+import * as ValidationUtils from "PKG/microservice-validation";
 
 const LOGIN = gql`
   mutation Login($username: String!, $password: String!) {

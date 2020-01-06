@@ -5,7 +5,7 @@ import { NavItem, NavLink } from "reactstrap";
 import { Query } from "react-apollo";
 import * as Viewer from "Queries/viewer";
 
-import { Layout } from "@nebulario/linker-layout";
+import { Layout } from "@nebulario/microservice-layout";
 
 export const HomeLink = ({ viewer }) => (
   <NavItem>

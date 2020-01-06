@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import * as Notify from "PKG/linker-notify";
+import * as Notify from "PKG/microservice-notify";
 
 export const onError = error => {
 
