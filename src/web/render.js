@@ -6,10 +6,15 @@ import { ApolloProvider } from "react-apollo";
 import { ApolloClient } from "apollo-boost";
 import { HttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
+import { ToastContainer } from "react-toastify";
 
 import { createStore, applyMiddleware, combineReducers, compose } from "redux";
 import createHistory from "history/createBrowserHistory";
-import { ConnectedRouter, connectRouter, routerMiddleware } from "connected-react-router";
+import {
+  ConnectedRouter,
+  connectRouter,
+  routerMiddleware
+} from "connected-react-router";
 
 export const render = ({
   App,
@@ -34,6 +39,7 @@ export const render = ({
             <App />
           </ConnectedRouter>
         </Provider>
+        <ToastContainer />
       </ApolloProvider>
     );
   };
@@ -42,7 +48,6 @@ export const render = ({
 };
 
 const configureGraph = ({ url, initState }) => {
-  
   return new ApolloClient({
     cache: new InMemoryCache().restore(window.__APOLLO_STATE__),
     link: new HttpLink({ uri: url })

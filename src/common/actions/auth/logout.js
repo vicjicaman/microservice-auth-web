@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 import * as Viewer from "Queries/viewer";
+import * as Mutation from "UI/utils/mutation";
 
 const LOGOUT = gql`
   mutation Logout {
@@ -19,7 +20,8 @@ export default withRouter(function({ history }) {
     refetchQueries: [{ query: Viewer.GET }],
     onCompleted: () => {
       history.push("/auth");
-    }
+    },
+    onError: Mutation.onError
   });
 
   return (

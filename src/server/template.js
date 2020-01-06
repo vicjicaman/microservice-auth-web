@@ -8,9 +8,9 @@ export const header = ({ paths: { resources: resourcesPath } }) => {
           <meta name="viewport" content="width=device-width, initial-scale=1">
           <link rel="stylesheet" href="${resourcesPath}/bootstrap/css/bootstrap.min.css"/>
           <link rel="stylesheet" href="${resourcesPath}/font-awesome/css/font-awesome.css"/>
+          <link rel="stylesheet" href="${resourcesPath}/react-toastify/dist/ReactToastify.css"/>
 
-
-          <title>Microservices</title>
+          <title>Repoflow - Blog</title>
         </head>
         <body>
             <div id="root">

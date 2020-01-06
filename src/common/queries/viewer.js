@@ -6,6 +6,15 @@ export const GET = gql`
     viewer {
       id
       username
+      account {
+        get {
+          id
+          username
+          email
+          status
+          created_at
+        }
+      }
     }
   }
 `;

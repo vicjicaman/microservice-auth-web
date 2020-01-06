@@ -5,6 +5,7 @@ import { useMutation } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
 import * as Viewer from "Queries/viewer";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import * as Mutation from "UI/utils/mutation";
 
 const Confirm = ({ button: TriggerButton, onConfirm }) => {
   const [isOpen, setModalState] = useState(false);
@@ -68,7 +69,8 @@ export default withRouter(function({ history }) {
     refetchQueries: [{ query: Viewer.GET }],
     onCompleted: () => {
       history.push("/auth");
-    }
+    },
+    onError: Mutation.onError
   });
 
   return (

@@ -10,6 +10,7 @@ export const GET = gql`
           id
           username
           email
+          status
           created_at
         }
       }
