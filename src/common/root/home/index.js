@@ -4,11 +4,12 @@ import { Query } from "react-apollo";
 import Login from "Actions/auth/login";
 import Unregister from "Actions/auth/unregister";
 import Logout from "Actions/auth/logout";
+import Validate from "Actions/auth/validate";
 import * as Account from "Queries/account";
 
 export default ({ history, viewer: { username } }) => (
   <div>
-    <div className="row">
+    <div className="row justify-content-md-center">
       {username ? (
         <Query query={Account.GET}>
           {({ loading, error, data }) => {
@@ -18,7 +19,7 @@ export default ({ history, viewer: { username } }) => (
             const {
               viewer: {
                 account: {
-                  get: { id, username, email, created_at }
+                  get: { id, username, email, created_at, status }
                 }
               }
             } = data;
@@ -61,18 +62,18 @@ export default ({ history, viewer: { username } }) => (
                   </div>
                 </div>
 
-                <div className="col-md-6 mt-4">
-                  <div className="card">
-                    <div className="card-header">
-                      <i className="fa fa-book" /> Latest activity...
-                    </div>
-                    <div className="card-body">
-                      <ul className="list-group list-group-flush">
-                        <li className="list-group-item">TODO...</li>
-                      </ul>
+                {status === "validating" && (
+                  <div className="col-md-6 mt-4">
+                    <div className="card">
+                      <div className="card-header">
+                        <i className="fa fa-book" /> Validate token...
+                      </div>
+                      <div className="card-body">
+                        <Validate />
+                      </div>
                     </div>
                   </div>
-                </div>
+                )}
               </React.Fragment>
             );
           }}

@@ -4,9 +4,12 @@ import { NavLink } from "react-router-dom";
 import { NavItem } from "reactstrap";
 import { useMutation } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
-import { Alert } from "reactstrap";
+import { Alert, Input } from "reactstrap";
 import Loading from "UI/loading";
 import * as Viewer from "Queries/viewer";
+import * as Mutation from "UI/utils/mutation";
+import validator from "validator";
+import * as ValidationUtils from "PKG/linker-validation";
 
 const REGISTER = gql`
   mutation Register($username: String!, $email: String!, $password: String!) {
@@ -20,9 +23,62 @@ const REGISTER = gql`
 `;
 
 export default function({ history }) {
-  let username;
-  let email;
-  let password;
+  const initial = { username: "", email: "", password: "" };
+
+  const [form, setFields] = useState({
+    fields: initial,
+    validation: { fields: {}, valid: false },
+    touched: {}
+  });
+
+  const reset = (fields = initial) => {
+    setFields(form => ({
+      ...form,
+      fields,
+      validation: { fields: {}, valid: false },
+      touched: {}
+    }));
+  };
+
+  const handleFieldChange = event => {
+    event.persist();
+    const fieldName = event.target.name;
+    const fieldValue = event.target.value.trim();
+
+    setFields(form => {
+      const modFields = {
+        ...form.fields,
+        [fieldName]: fieldValue
+      };
+
+      const modTouch = {
+        ...form.touched,
+        [fieldName]: true
+      };
+
+      const validation = { valid: true, fields: {} };
+      const { username, password, email } = modFields;
+
+      validation.fields.username =
+        !validator.isEmpty(username) && ValidationUtils.isEntityName(username);
+      validation.fields.email =
+        !validator.isEmpty(email) && validator.isEmail(email);
+      validation.fields.password =
+        !validator.isEmpty(password) &&
+        validator.isLength(password, { min: 4 });
+
+      validation.valid =
+        validation.fields.username &&
+        validation.fields.email &&
+        validation.fields.password;
+
+      return {
+        fields: modFields,
+        validation,
+        touched: modTouch
+      };
+    });
+  };
 
   const [
     register,
@@ -33,7 +89,8 @@ export default function({ history }) {
       if (register !== null) {
         window.location = "/";
       }
-    }
+    },
+    onError: Mutation.onError
   });
 
   return (
@@ -43,9 +100,9 @@ export default function({ history }) {
           e.preventDefault();
           register({
             variables: {
-              username: username.value,
-              email: email.value,
-              password: password.value
+              username: form.fields.username,
+              email: form.fields.email,
+              password: form.fields.password
             }
           });
         }}
@@ -58,16 +115,19 @@ export default function({ history }) {
             Username
           </label>
           <div className="col-md-6">
-            <input
+            <Input
               type="text"
               id="username"
+              invalid={
+                form.validation.fields.username === false &&
+                form.touched.username
+              }
               className="form-control"
               name="username"
               required
               autoFocus
-              ref={node => {
-                username = node;
-              }}
+              value={form.fields.username}
+              onChange={handleFieldChange}
             />
           </div>
         </div>
@@ -80,15 +140,17 @@ export default function({ history }) {
             E-mail
           </label>
           <div className="col-md-6">
-            <input
+            <Input
               type="text"
               id="email"
+              invalid={
+                form.validation.fields.email === false && form.touched.email
+              }
               className="form-control"
               name="email"
               required
-              ref={node => {
-                email = node;
-              }}
+              value={form.fields.email}
+              onChange={handleFieldChange}
             />
           </div>
         </div>
@@ -101,15 +163,18 @@ export default function({ history }) {
             Password
           </label>
           <div className="col-md-6">
-            <input
+            <Input
               type="password"
               id="password"
+              invalid={
+                form.validation.fields.password === false &&
+                form.touched.password
+              }
               className="form-control"
               name="password"
               required
-              ref={node => {
-                password = node;
-              }}
+              value={form.fields.password}
+              onChange={handleFieldChange}
             />
           </div>
         </div>
@@ -118,19 +183,12 @@ export default function({ history }) {
           <button
             type="submit"
             className="btn btn-primary"
-            disabled={mutationLoading}
+            disabled={mutationLoading || !form.validation.valid}
           >
             {mutationLoading ? <Loading /> : "Register"}
           </button>
         </div>
       </form>
-      <div className="mt-4">
-        {mutationError && (
-          <Alert color="warning">
-            Register error! username already exists
-          </Alert>
-        )}
-      </div>
     </div>
   );
 }
